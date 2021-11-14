@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "Body.h"
+#include "Bodies.h"
 #include <GLFW/glfw3.h>
 
 using std::cout;
@@ -8,7 +8,7 @@ using std::endl;
 using std::string;
 using std::vector;
 
-int main_()
+int main()
 {
     vector<Body> Masses;
 
@@ -47,7 +47,7 @@ int main_()
     return 0;
 }
 
-int main(void)
+int main_(void)
 {
     GLFWwindow* window;
 

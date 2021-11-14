@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Body.h">
+    <ClInclude Include="src\Bodies.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "Body.h"
+#include "Bodies.h"
 #include <iostream>
 
 using std::string;
