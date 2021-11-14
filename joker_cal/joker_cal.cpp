@@ -4,6 +4,24 @@
 #include <sstream>
 
 
+double factorial(int x)
+{
+    if (x == 1)
+        return 1;
+    else if (x == 0)
+        return 1;
+
+    double res = x;
+    for (int i = x - 1; i > 2; --i)
+        res *= i;
+    
+    return res;
+}
+
+
+double expected_value();
+
+
 double power(double num, int pwr)
 {
     double result = 1;
