@@ -2,4 +2,6 @@
 D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\src\joker_cal.cpp(153,78): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\src\joker_cal.cpp(196,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\src\joker_cal.cpp(197,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
   joker_cal.vcxproj -> D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\bin\Debug\joker_cal.exe

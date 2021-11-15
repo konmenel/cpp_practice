@@ -14,7 +14,7 @@ bool config::on_display = false;
 double config::jackpot = 0.0;
 double config::number_of_tickets = 0.0;
 double config::target_prob = 0.0;
-map<vector<int>, double> config::PRICES = { {{1, 1}, 1.5 },
+map<vector<int>, double> config::PRIZES = { {{1, 1}, 1.5 },
                                             {{2, 1}, 2.0},
                                             {{3, 0},   2.0},
                                             {{3, 1}, 50.0},
@@ -78,8 +78,8 @@ void set_config(int& argc, const char* argv[])
         exit(1);
     }
 
-    config::PRICES.emplace(std::initializer_list<int>{ 5, 0 }, 0.05 * config::jackpot);
-    config::PRICES.emplace(std::initializer_list<int>{ 5, 1 }, config::jackpot);
+    config::PRIZES.emplace(std::initializer_list<int>{ 5, 0 }, 0.05 * config::jackpot);
+    config::PRIZES.emplace(std::initializer_list<int>{ 5, 1 }, config::jackpot);
 }
 
 
@@ -111,17 +111,17 @@ double nchoosek(int n, int k)
 }
 
 
-double get_probability_price(vector<int> price_group)
+double get_probability_prize(vector<int> prize_group)
 {
     double res = 1;
     int start = 45; 
-    int end = 45 - price_group[0];
+    int end = 45 - prize_group[0];
     for (int i = 45; i > end; i--)
         res *= i;
 
-    res /= factorial(price_group[0]);
+    res /= factorial(prize_group[0]);
 
-    if (price_group[1])
+    if (prize_group[1])
         res *= 20;
 
     return res;
@@ -143,15 +143,15 @@ double expected_value(double tol)
     double res = 0;
     int winners;
 
-    for (auto price = config::PRICES.rbegin(); price != config::PRICES.rend(); ++price)
+    for (auto prize = config::PRIZES.rbegin(); prize != config::PRIZES.rend(); ++prize)
     {
-        prob_for_1 = 1 / get_probability_price(price->first);
+        prob_for_1 = 1 / get_probability_prize(prize->first);
 
         winners = 1;
         while (true)
         {
             prob = prob_of_n_winners(winners, prob_for_1) / nchoosek(config::number_of_tickets, winners);
-            term = prob * price->second / winners;
+            term = prob * prize->second / winners;
 
             if (res != 0 && term < tol)
                 break;
@@ -214,7 +214,7 @@ int winning_atleast_once(double target)
     // TODO: add on-display option
 
     vector<int> jackpot_comb = { 5, 1 };
-    double lose = 1 - (1 / get_probability_price(jackpot_comb)); // probability of losing
+    double lose = 1 - (1 / get_probability_prize(jackpot_comb)); // probability of losing
     double temp = lose;
     int count = 0;
 

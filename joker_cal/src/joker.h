@@ -18,7 +18,7 @@ using std::vector;
 struct config
 {
     static double WIN; // probability to win
-    static map<vector<int>, double> PRICES;
+    static map<vector<int>, double> PRIZES;
     static double target_prob, jackpot, number_of_tickets; // command line arguments in order
     static bool on_display; // command line option ("-o")
 };
@@ -32,7 +32,7 @@ double factorial(int x);
 
 double nchoosek(int n, int k);
 
-double get_probability_price(vector<int> price_group);
+double get_probability_prize(vector<int> prize_group);
 
 double prob_of_n_winners(int n, double prob);
 
