@@ -24,22 +24,28 @@ map<vector<int>, double> config::PRICES = { {{1, 1}, 1.5 },
 
 void set_config(int& argc, const char* argv[])
 {
+    std::string user_input;
     switch (argc)
     {
     case 1:
-        cout << "Type target probability in decimal format: ";
+        cout << "Please provide the following arguments:\n";
+        cout << "Probability in decimal format: ";
         cin >> config::target_prob;
-        cout << "Type jackpot value in euros: ";
-        cin >> config::jackpot;
-        cout << "Type estimated number of tickets being sold: ";
-        cin >> config::number_of_tickets;
+        cout << "Jackpot value in euros (can be skipped): ";
+        cin.ignore();
+        std::getline(std::cin, user_input);
+        if (!user_input.empty())
+        {
+            config::jackpot = std::stof(user_input);
+            cout << "Estimated number of tickets being sold: ";
+            cin >> config::number_of_tickets;
+        }
         break;
     case 2:
-        cout << "Not enough arguments\n";
-        example_format();
-        exit(1);
+        config::target_prob = std::atof(argv[1]);
+        break;
     case 3:
-        cout << "Not enough arguments\n";
+        cout << "Not enough arguments. Try one or three arguments.\n";
         example_format();
         exit(1);
     case 4:
@@ -52,7 +58,7 @@ void set_config(int& argc, const char* argv[])
         config::jackpot = std::atof(argv[2]);
         config::number_of_tickets = std::atof(argv[3]);
         if (std::strcmp(argv[4], "-o") == 0)
-            cout << "Not implemented yet.\n"; //config::on_display = true;
+            printf("`%s` not implemented yet.\n", argv[4]); //config::on_display = true;
         else
             printf("Unknown argument `%s` ignored. Try `-o` to display results of calculetion.\n", argv[4]);
         break;
@@ -133,7 +139,6 @@ double expected_value(double tol)
 {
     // TODO: fix nan in res and term.
 
-    // expected value = probability * price
     double prob_for_1, prob, term;
     double res = 0;
     int winners;
@@ -141,7 +146,6 @@ double expected_value(double tol)
     for (auto price = config::PRICES.rbegin(); price != config::PRICES.rend(); ++price)
     {
         prob_for_1 = 1 / get_probability_price(price->first);
-        // expected_winners = prob_for_1 * NUMBER_OF_TICKETS;
 
         winners = 1;
         while (true)
