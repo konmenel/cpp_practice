@@ -32,7 +32,7 @@ double factorial(int x);
 
 double nchoosek(int n, int k);
 
-double get_probability_prize(vector<int> prize_group);
+double get_comb_prize(vector<int> prize_group);
 
 double prob_of_n_winners(int n, double prob);
 

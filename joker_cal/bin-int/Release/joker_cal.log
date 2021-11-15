@@ -4,8 +4,8 @@ D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\src\joker_cal.cpp(196,25):
 D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\src\joker_cal.cpp(197,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   main.cpp
   Generating code
-  36 of 346 functions (10.4%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
+  3 of 346 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   joker_cal.vcxproj -> D:\Users\kotsi\OneDrive\Github\cpp_practice\joker_cal\bin\Release\joker_cal.exe

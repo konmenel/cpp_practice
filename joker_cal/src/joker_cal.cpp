@@ -111,7 +111,7 @@ double nchoosek(int n, int k)
 }
 
 
-double get_probability_prize(vector<int> prize_group)
+double get_comb_prize(vector<int> prize_group)
 {
     double res = 1;
     int start = 45; 
@@ -145,7 +145,7 @@ double expected_value(double tol)
 
     for (auto prize = config::PRIZES.rbegin(); prize != config::PRIZES.rend(); ++prize)
     {
-        prob_for_1 = 1 / get_probability_prize(prize->first);
+        prob_for_1 = 1 / get_comb_prize(prize->first);
 
         winners = 1;
         while (true)
@@ -214,7 +214,7 @@ int winning_atleast_once(double target)
     // TODO: add on-display option
 
     vector<int> jackpot_comb = { 5, 1 };
-    double lose = 1 - (1 / get_probability_prize(jackpot_comb)); // probability of losing
+    double lose = 1 - (1 / (get_comb_prize(jackpot_comb))); // probability of losing
     double temp = lose;
     int count = 0;
 
