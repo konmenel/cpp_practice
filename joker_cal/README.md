@@ -28,3 +28,7 @@ The first field contains 45 number and the second 20.
 to be filled...
 ## Expected value per ticket
 to be filled...
+
+
+# References
+- Joker Guide: https://www.opap.gr/en/how-to-play-joker
