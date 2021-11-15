@@ -9,15 +9,17 @@ No dependancies, just download the binary and run it or the files from source.
 # To run
 To run the application open a terminal on the directory of the binaries and type:
 ```
->>./joker_cal <target-probability> <jackpot> <total-number-of-tickets> <options>
+> ./joker_cal <target-probability> <jackpot> <total-number-of-tickets> <options>
 ```
 `<target-probability>` is the percentage in decimal format (i.e. 0.5 for 50%)
 `<jackpot>` Optional. The value of the jackpot in euros.
 `<otal-number-of-tickets>` Optional. The estimate of the amount of ticket being sold.
-`<options>` Currently not implemented. `-o` to desplay results of calculation on screen.
+`<options>` Currently not implemented. `-o` to display results results during the calculation process.
 
-# How "Joker" works
-To win joker you have to correctly guess 5 number from the first field and 1 from the second field. The first field contains 45 number and the second 20.
+Alternatively, you can just run the binary (.exe) without any arguments and fill the answers in the program.
+
+# How Joker works
+To win Joker you have to correctly guess 5 number from the first field and 1 from the second field. The first field contains 45 number and the second 20.
 
 # How the tool works
 ## Probability for at least 1 win.
@@ -28,3 +30,5 @@ to be filled...
 
 # References
 - Joker Guide: https://www.opap.gr/en/how-to-play-joker
+
+<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
