@@ -9,12 +9,13 @@ This is a tool I created as practice for C++ and to prove that lottery is a wast
 # **To Do...**
 - [ ] Add on-screen option
 - [ ] Implement taylor series approximation of log for analytical solution
+- [ ] Try to add the extra cases in expected value (more guesses/varying cost)
 
 # **Dependencies**
 No dependancies, just download the binary and run it or the files from source.
 
-# **To run**
-To run the application open a terminal on the directory of the binaries and type:
+# **Run**
+To run the application open a terminal (i.e. Command Prompt) on the directory of the binaries and type:
 ```
 > ./joker_cal <target-probability> <jackpot> <total-number-of-tickets> <options>
 ```
@@ -129,8 +130,7 @@ From there one needs to find a way to calculate the above logarithm. A Taylor se
 However, since we are lazy and not smart there is always the easy route. All we need to do is try numbers starting from 1 until the probability of losing once raise to the power of that number is smaller than the target probability.
 
 There are two problem with this approach though:
-1. If the number ***n*** is too big (which is in our problem), let say 1000, no calculator can perform the operation ![\begin{align*}
-\color{red}x^1000\end{align*}](https://render.githubusercontent.com/render/math?math=%5Ctextstyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0Ax%5E1000%0A%5Cend%7Balign%2A%7D%0A). The C++ `pow` function can though so no real problems there.
+1. If the number ***n*** is too big (which is in our problem), let say 1000, no calculator can perform the operation *x<sup>1000</sup>*. Although, the C++ `pow` function can so no real problems there.
 2. It is a slow algorithm. The number of draws for just a 50-50 chance is in the order of tens of millions. This means that we need millions of iteration to compute just 50% chance.
 
 To speed up the process we start the iterations with just the probability of losing once and on each iteration we multiple the number of the previous iteration by the initial probability to the power of 1000:
@@ -143,11 +143,56 @@ To speed up the process we start the iterations with just the probability of los
 
 The reason why we do it like that is to speed up the execution of the power function. Although, as the `pow` function is very optimized the difference might not exist. Once we get close enought to the value we change to power to 100 and then 10 and finally 1 until we reach the target.
 
-Of course this is just an approximation and as such the solution is probably off by a few draws. However, since the number of draws are to the order of tens of millions the error for 1000 draws off is <0.01%. I my experience this is good enough. Anyhow, according to python `math.log`, the algorith is off by 1-2 draws or <0.00001%. 
+Of course this is just an approximation and as such the solution is probably off by a few draws. However, since the number of draws are to the order of tens of millions the error for 1000 draws off is <0.01%. I my experience this is good enough. 
+
+After a bit of testing, according to python `math.log`, the algorith is off by 1-2 draws or <0.00001%. 
 
 ## **Expected value per ticket**
+A much more interesting result is the expected value of the ticket. This figure can tell us the value that we get with each ticket that we buy. For instance, if the expected value is 1 euro, then for each ticket that we buy we make 1 euro.
+
+However, we should nod that even if the value is positive that doesn't necessarily that we will make money playing. The real meaning is that we will eventually, if we keep playing, go positive, but this could be after 10 tickets or 1 million tickets. The more positive, the less time it will probably take, if the cost is fixed. Still though, it is a figure worth calculaing.
+
+### **Mathimatical definition**
+By definition, the expected value is the sum of all the possible outcomes multiplied by their probabilities or in mathimatical terms:
+
+![\begin{align*}
+\color{red}
+EV = \sum{P(X_i)\times X_i}
+\end{align*}
+](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AEV+%3D+%5Csum%7BP%28X_i%29%5Ctimes+X_i%7D%0A%5Cend%7Balign%2A%7D%0A)
+
+Where *X<sub>i</sub>* is the outcome *i* and *P(X<sub>i</sub>)* the probability of the outcome *i*.
+
+### **The nature of the problem**
+At a first glance, it seems like it is a simple problem. Since there are 8 price teir, all we need to do is multiply each of the prices with their corresponding probability. This is a good option if we want some results fast. However, this approach is wrong as by so we are assume that there can only be one winner in each tier. In reality, if multiple winners win in the 5+1 tier (or the Jackpot) the price is split. The difference between the correct and fast approach is small if the number of the total tickets is small, but as more people are playing the difference in the two results grows rapidly.
+
+The three factores that influances the expected value of the ticket are:
+1. The cost of the ticket.
+2. The prices of each tier (mainly the Jackpot).
+3. The number of tickets in each draw.
+
+From the above, only the last two vary as the cost of the tickets is fixed. This is if you neglect the cases where you can buy a ticket with more that 5+1 guesses. To take that into account we would need to know the exact formula that is used to calculate the extra cost of the ticket, which is info that we don't have. So for simplicity we will ignore that. In any case, the formula that is being used is probably designed to decrease the expected value even further, as they try to maximize their profits.
+
+So, what we need to do is evaluate the probability of us winning while there are *n* winners and multiply that with the price divided by the number of winners (for each tier). To do that we first need to find what is the probability of *n* people share the same winning guess. This is a very similar problem with a well studied statistics problem known as *"The birthday paradox"*. We will note explain the problem here, but the details of the problem can be found at the references.
+
+## Solution
+Directly applying the analytical solution here is unfeasible due to the large number being involved. For the analytical solution we need to calulate the compinations of large number, which involves huge factorials. This is impossible as we will not only have problems with overflow and/or rounding errors but computational time as well. 
+
+For the reasons above an approximation must be made. Thankfully there we have an available option. By using the Taylor series of the exponential function, *e<sup>x</sup>*, the solution can be approximated by Poisson's formula:
+
+![\begin{align*}
+\color{red}
+P(n)=\dfrac{\lambda^n\e^{-\lambda}}{n!}
+\end{align*}
+](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP%28n%29%3D%5Cdfrac%7B%5Clambda%5En%5Ce%5E%7B-%5Clambda%7D%7D%7Bn%21%7D%0A%5Cend%7Balign%2A%7D%0A)
+
+To be continued... (passive-aggressive)
+
+# Results
 to be filled... (passive-aggressive)
 
 # **References**
 - Joker Guide: https://www.opap.gr/en/how-to-play-joker
 - Joker Cost Calculator: https://www.opap.gr/en/joker-cost-calculator
+- Birthday Paradox: https://en.wikipedia.org/wiki/Birthday_problem
+- Poisson Distribution: https://en.wikipedia.org/wiki/Poisson_distribution
