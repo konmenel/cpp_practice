@@ -173,18 +173,30 @@ The three factores that influances the expected value of the ticket are:
 
 From the above, only the last two vary as the cost of the tickets is fixed. This is if you neglect the cases where you can buy a ticket with more that 5+1 guesses. To take that into account we would need to know the exact formula that is used to calculate the extra cost of the ticket, which is info that we don't have. So for simplicity we will ignore that. In any case, the formula that is being used is probably designed to decrease the expected value even further, as they try to maximize their profits.
 
+The other two variables have opposite effect on the function. It is obvious that as the Jackpot gets larger the estimated value of the ticket goes up. However, as more people play the possibility of a split Jackpot also goes up and thus the expected value drops. They, in fact, are not independent from each other, but thats a story for another time.
+
 So, what we need to do is evaluate the probability of us winning while there are *n* winners and multiply that with the price divided by the number of winners (for each tier). To do that we first need to find what is the probability of *n* people share the same winning guess. This is a very similar problem with a well studied statistics problem known as *"The birthday paradox"*. We will note explain the problem here, but the details of the problem can be found at the references.
 
 ## Solution
 Directly applying the analytical solution here is unfeasible due to the large number being involved. For the analytical solution we need to calulate the compinations of large number, which involves huge factorials. This is impossible as we will not only have problems with overflow and/or rounding errors but computational time as well. 
 
-For the reasons above an approximation must be made. Thankfully there we have an available option. By using the Taylor series of the exponential function, *e<sup>x</sup>*, the solution can be approximated by Poisson's formula:
+For the reasons above an approximation must be made. Thankfully we have an option available. By using the Taylor series of the exponential function, *e<sup>x</sup>*, the solution can be approximated by Poisson's formula:
 
 ![\begin{align*}
 \color{red}
 P(n)=\dfrac{\lambda^n\e^{-\lambda}}{n!}
 \end{align*}
 ](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP%28n%29%3D%5Cdfrac%7B%5Clambda%5En%5Ce%5E%7B-%5Clambda%7D%7D%7Bn%21%7D%0A%5Cend%7Balign%2A%7D%0A)
+
+Where, ***n*** is the number of winners and ***λ*** is the expected number of winners, that is the product of the probability of winning and the number of tickets. ***λ*** is also the mean and the variance of the distribution of winners.
+
+The approximation is dervived by keeping the first 2 terms on the Taylor expansion of *e<sup>x</sup>* (*=1+x*) and ignoring the rest. For that result is works well if the value of *x* is close to 0. Since the *x* variable in this problem is the probability of winning(*~4.1e-8*), the approximation is very good.
+
+Having the above fomula we can calculate the probability of having 1, 2, 3 and so on winners, for a given number of the total tickets. However, this is just how likely it is that the draw will result in 2 winners, for example. What we need to consider next is the probability that our ticket one of the winning tickets. This can easily be calculated from the equation shown in the previous section, that is the ***n*** choose ***k*** equation. The ***n*** in this context is the total number of tickets and the ***k*** choices are the number of winning tickets, or 2 in this previous example. 
+
+Having those two probabilities we multiply them together to find our probability of winning when there are ***n*** winners. The last step is to multiply the probability with the outcome. In this case the outcome is the amount of money that we will receive which is, for the 8<sup>th</sup> price tier, the Jackpot divided by the number of winners. 
+
+All we need to do to find the expected value, is to calculate the probability of winning for 1 to the max amount of winners, which is the total amount of tickets, for every price tier. However, this is still impossible to calculate as the function of ***n*** choose ***k*** equation is difficult to calculate for large numbers. Thankfully, we don't really need to do that.
 
 To be continued... (passive-aggressive)
 
