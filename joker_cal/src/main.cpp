@@ -5,8 +5,8 @@
 int main(int argc, const char* argv[])
 {
 #ifdef _DEBUG
-    int args_len = 2;
-    const char* args[] = {"", "0.5", "2000000", "500000" , "-o"};
+    int args_len = 5;
+    const char* args[] = {"", "0.5", "1000000", "1500000" , "-o"};
     set_config(args_len, args);
 #else
     set_config(argc, argv);

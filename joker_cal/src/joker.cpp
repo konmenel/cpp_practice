@@ -105,9 +105,35 @@ double factorial(int x)
 double nchoosek(int n, int k)
 {
     double res = 1;
-    for (int i = n; i > n - k; i--)
-        res *= i;
-    return res / factorial(k);
+    
+    double i = n, j = k;
+
+    while (true)
+    {
+        if (isinf(res))
+            return 0;
+
+        if (i > n-k && j > 1)
+        {
+            res *= i / j;
+            i--; j--;
+        }
+        else if (i > n-k)
+        {
+            res *= i;
+            i--;
+        }
+        else if (j > 1)
+        {
+            res /= j;
+            j--;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return res;
 }
 
 
@@ -128,10 +154,24 @@ double get_comb_prize(vector<int> prize_group)
 }
 
 
+double pow_factorial(double x, int n)
+{
+    if (n == 0)
+        return 1;
+    else if (n == 1)
+        return x;
+
+    double res = 1;
+    for (double i = n; i > 0; i--)
+        res *= x / i;
+    return res;
+}
+
+
 double prob_of_n_winners(int n, double prob)
 {
     double expected_winners = config::number_of_tickets * prob;
-    return pow(expected_winners, n) * exp(-expected_winners) / factorial(n);
+    return pow_factorial(expected_winners, n) * exp(-expected_winners);
 }
 
 
@@ -139,32 +179,41 @@ double expected_value(double tol)
 {
     // TODO: fix nan in res and term.
 
-    double prob_for_1, prob, term;
+    double prob_for_1, prob, term, exp_winners, n_choose_k;
     double res = 0;
     int winners;
 
     for (auto prize = config::PRIZES.rbegin(); prize != config::PRIZES.rend(); ++prize)
     {
         prob_for_1 = 1 / get_comb_prize(prize->first);
+        exp_winners = prob_for_1 * config::number_of_tickets;
+
 
         winners = 1;
-        while (true)
+        while (winners <= config::number_of_tickets)
         {
-            prob = prob_of_n_winners(winners, prob_for_1) / nchoosek(config::number_of_tickets, winners);
+            n_choose_k = nchoosek(config::number_of_tickets, winners);
+            if (n_choose_k != 0.0)
+                prob = prob_of_n_winners(winners, prob_for_1) / n_choose_k;
+            else
+                prob = 0.0;
             term = prob * prize->second / winners;
 
-            if (res != 0 && term < tol)
+            if (res != 0 && winners > exp_winners && term < tol)
                 break;
 
             res += term;
             winners++;
-            if (winners % 1000 == 0)
-                cout << winners << " " << config::number_of_tickets * prob_for_1 << std::endl;
+
+#ifdef _DEBUG
+            cout.precision(4);
+            if (winners % 10 == 0)
+                cout << exp_winners << " " << winners << " " << res << std::endl;
+#endif // _DEBUG
         }
     }
     return res;
 }
-
 
 string corrected_to_string(int value)
 {
@@ -181,13 +230,11 @@ string num_to_string(int num)
 {   
     string res;
     // find where the first comma goes
-    int n = 3;
-    while ((num / pow(10, n)) > 1)
+    int n = 0;
+    while ((num / pow(10, n+3)) >= 1)
     {
         n += 3;
     }
-    n -= 3;
-
     
     int high, low, printed_value;
     low = 0;
@@ -197,6 +244,9 @@ string num_to_string(int num)
         low = (int)num / pow(10, i);
 
         printed_value = low - high * 1000;
+        if (i == n && printed_value == 0)
+            printed_value = 1;
+
         if (i != n)
             res += corrected_to_string(printed_value);
         else

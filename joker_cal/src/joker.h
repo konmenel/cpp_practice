@@ -34,6 +34,8 @@ double nchoosek(int n, int k);
 
 double get_comb_prize(vector<int> prize_group);
 
+double pow_factorial(double x, int n);
+
 double prob_of_n_winners(int n, double prob);
 
 double expected_value(double tol = 1e-16);
