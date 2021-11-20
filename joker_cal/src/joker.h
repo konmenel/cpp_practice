@@ -2,9 +2,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <map>
 #include <vector>
+#include <math.h>
+
 
 
 using std::string;
