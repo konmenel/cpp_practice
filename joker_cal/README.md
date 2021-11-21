@@ -192,8 +192,9 @@ Where, ***n*** is the number of winners and ***λ*** is the expected number of w
 
 The approximation is dervived by keeping the first 2 terms on the Taylor expansion of *e<sup>x</sup>* (*=1+x*) and ignoring the rest. For that result is works well if the value of *x* is close to 0. Since the *x* variable in this problem is the probability of winning(*~4.1e-8*), the approximation is very good.
 
-<span style="font-size:24px; color:red">Wrong! Ingore me!</span>
-
+```diff
+- Ingore following! NEEDS FIXING
+```
 Having the above fomula we can calculate the probability of having 1, 2, 3 and so on winners, for a given number of the total tickets. However, this is just how likely it is that the draw will result in 2 winners, for example. What we need to consider next is the probability that our ticket one of the winning tickets. This can easily be calculated as the inverse of the equation shown in the previous section. That is the ***n*** choose ***k*** equation. The ***n*** in this context is the total number of tickets and the ***k*** choices are the number of winning tickets, or 2 in the previous example. In mathimatical terms:
 
 ![\begin{align*}
