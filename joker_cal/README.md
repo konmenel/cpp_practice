@@ -48,7 +48,7 @@ We need to guess 5 numbers from a total of 45 numbers. So our first guess can be
 \color{red} \large
 45\times44\times43\times42\times41=146611080
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A45%5Ctimes44%5Ctimes43%5Ctimes42%5Ctimes41%3D146611080%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A45%5Ctimes44%5Ctimes43%5Ctimes42%5Ctimes41%3D146611080%0A%5Cend%7Balign%2A%7D%0A)
 
 However, since the order of the number does not matter we need to divide that number with total number of possible permutations for 5 items. It can easily be proven that the number of permutions can be of 5 items is the factorial of 5:
 
@@ -56,7 +56,7 @@ However, since the order of the number does not matter we need to divide that nu
 \color{red} \large
 5!=5\times4\times3\times2\times1=120
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A5%21%3D5%5Ctimes4%5Ctimes3%5Ctimes2%5Ctimes1%3D120%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A5%21%3D5%5Ctimes4%5Ctimes3%5Ctimes2%5Ctimes1%3D120%0A%5Cend%7Balign%2A%7D%0A)
 
 So our final result for the first field is:
 
@@ -64,7 +64,7 @@ So our final result for the first field is:
 \color{red} \large
 \dfrac{146611080}{120}=1221759
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A%5Cdfrac%7B146611080%7D%7B120%7D%3D1221759%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A%5Cdfrac%7B146611080%7D%7B120%7D%3D1221759%0A%5Cend%7Balign%2A%7D%0A)
 
 The above can be generalized in one equation for a field with ***n*** numbers and ***k*** choices with:
 
@@ -72,7 +72,7 @@ The above can be generalized in one equation for a field with ***n*** numbers an
 \color{red} \large
 {n \choose k}=\dfrac{n!}{k!(n-k)!} 
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A%7Bn+%5Cchoose+k%7D%3D%5Cdfrac%7Bn%21%7D%7Bk%21%28n-k%29%21%7D+%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0A%7Bn+%5Cchoose+k%7D%3D%5Cdfrac%7Bn%21%7D%7Bk%21%28n-k%29%21%7D+%0A%5Cend%7Balign%2A%7D%0A)
 
 ### **Second field combinatios and final probability for 1 ticket**
 The second field is much simple. Since we are only selecting only one number out of 20 numbers, the amount of possible combinations are just 20. We can also verify that in the formula we derived previously with **n=20** and **k=1**. To combine the 2 field we simply multible the answers together since the independed from each other:
@@ -81,7 +81,7 @@ The second field is much simple. Since we are only selecting only one number out
 \color{red} \large
 C_{total}=1221759\times20=24435180
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AC_%7Btotal%7D%3D1221759%5Ctimes20%3D24435180%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AC_%7Btotal%7D%3D1221759%5Ctimes20%3D24435180%0A%5Cend%7Balign%2A%7D%0A)
 
 The final probability for winning with 1 guess is by definition the number of wanted outcomes divided by the total number of outcomes, which for out case is:
 
@@ -89,7 +89,7 @@ The final probability for winning with 1 guess is by definition the number of wa
 \color{red} \large
 P_{win}=\dfrac{1}{C_{total}}=\dfrac{1}{24435180}\approx4.09246013e-8
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AP_%7Bwin%7D%3D%5Cdfrac%7B1%7D%7BC_%7Btotal%7D%7D%3D%5Cdfrac%7B1%7D%7B24435180%7D%5Capprox4.09246013e-8%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AP_%7Bwin%7D%3D%5Cdfrac%7B1%7D%7BC_%7Btotal%7D%7D%3D%5Cdfrac%7B1%7D%7B24435180%7D%5Capprox4.09246013e-8%0A%5Cend%7Balign%2A%7D%0A)
 
 ### **Probability of win for multible tickets**
 We are not done yet. Since, we want to know how many draws do we need to reach a target probability for at least 1 win, we need to extent the above for multiple tickets. To do that the easiest way is to calculated what is the probability of losing every time and subtracting it from 100%. To do that we find the probability of losing with 1 ticket which is:
@@ -98,7 +98,7 @@ We are not done yet. Since, we want to know how many draws do we need to reach a
 \color{red} \large
 P_{lose} = 1 - P_{win}
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AP_%7Blose%7D+%3D+1+-+P_%7Bwin%7D%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AP_%7Blose%7D+%3D+1+-+P_%7Bwin%7D%0A%5Cend%7Balign%2A%7D%0A)
 
 If we want to know the probability of losing 2 times in a row, all we need to know is multiple the probability of the two events since they are independed from each other. In general, the probability of losing ***n*** times is given:
 
@@ -106,7 +106,7 @@ If we want to know the probability of losing 2 times in a row, all we need to kn
 \color{red} \large
 P_{lose,n} = P_{lose}^n
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AP_%7Blose%2Cn%7D+%3D+P_%7Blose%7D%5En%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D+%5Clarge%0AP_%7Blose%2Cn%7D+%3D+P_%7Blose%7D%5En%0A%5Cend%7Balign%2A%7D%0A)
 
 ### **Solution**
 Since we know the target probability of winning, all we need to do is solve the above equation for ***n*** with the probability of losing ***n*** times equal to 1 minus the *target* probability. For example, for a target probability of 90% the avobe becomes:
@@ -115,7 +115,7 @@ Since we know the target probability of winning, all we need to do is solve the 
 \color{red}
 P_{lose,n} = 1 - 0.9=0.1 =P_{lose}^{n} 
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP_%7Blose%2Cn%7D+%3D+1+-+0.9%3D0.1+%3DP_%7Blose%7D%5E%7Bn%7D+%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP_%7Blose%2Cn%7D+%3D+1+-+0.9%3D0.1+%3DP_%7Blose%7D%5E%7Bn%7D+%0A%5Cend%7Balign%2A%7D%0A)
 
 The smart way to solve the above equation is to do so analytically using logarithms as follows:
 
@@ -123,7 +123,7 @@ The smart way to solve the above equation is to do so analytically using logarit
 \color{red}
 n = \log_{P_{lose}} P_{lose,n}
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0An+%3D+%5Clog_%7BP_%7Blose%7D%7D+P_%7Blose%2Cn%7D%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0An+%3D+%5Clog_%7BP_%7Blose%7D%7D+P_%7Blose%2Cn%7D%0A%5Cend%7Balign%2A%7D%0A)
 
 From there one needs to find a way to calculate the above logarithm. A Taylor series is a great way to do that. I will probably implement that at the future.
 
@@ -139,7 +139,7 @@ To speed up the process we start the iterations with just the probability of los
 \color{red}
 {({({(P_{lose})}^10)}^10)}^10
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0A%7B%28%7B%28%7B%28P_%7Blose%7D%29%7D%5E10%29%7D%5E10%29%7D%5E10%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0A%7B%28%7B%28%7B%28P_%7Blose%7D%29%7D%5E10%29%7D%5E10%29%7D%5E10%0A%5Cend%7Balign%2A%7D%0A)
 
 The reason why we do it like that is to speed up the execution of the power function. Although, as the `pow` function is very optimized the difference might not exist. Once we get close enought to the value we change to power to 100 and then 10 and finally 1 until we reach the target.
 
@@ -159,7 +159,7 @@ By definition, the expected value is the sum of all the possible outcomes multip
 \color{red}
 EV = \sum{P(X_i)\times X_i}
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AEV+%3D+%5Csum%7BP%28X_i%29%5Ctimes+X_i%7D%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AEV+%3D+%5Csum%7BP%28X_i%29%5Ctimes+X_i%7D%0A%5Cend%7Balign%2A%7D%0A)
 
 Where *X<sub>i</sub>* is the outcome *i* and *P(X<sub>i</sub>)* the probability of the outcome *i*.
 
@@ -186,17 +186,27 @@ For the reasons above an approximation must be made. Thankfully we have an optio
 \color{red}
 P(n)=\dfrac{\lambda^n\e^{-\lambda}}{n!}
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP%28n%29%3D%5Cdfrac%7B%5Clambda%5En%5Ce%5E%7B-%5Clambda%7D%7D%7Bn%21%7D%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Clarge%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP%28n%29%3D%5Cdfrac%7B%5Clambda%5En%5Ce%5E%7B-%5Clambda%7D%7D%7Bn%21%7D%0A%5Cend%7Balign%2A%7D%0A)
 
 Where, ***n*** is the number of winners and ***λ*** is the expected number of winners, that is the product of the probability of winning and the number of tickets. ***λ*** is also the mean and the variance of the distribution of winners.
 
 The approximation is dervived by keeping the first 2 terms on the Taylor expansion of *e<sup>x</sup>* (*=1+x*) and ignoring the rest. For that result is works well if the value of *x* is close to 0. Since the *x* variable in this problem is the probability of winning(*~4.1e-8*), the approximation is very good.
 
-Having the above fomula we can calculate the probability of having 1, 2, 3 and so on winners, for a given number of the total tickets. However, this is just how likely it is that the draw will result in 2 winners, for example. What we need to consider next is the probability that our ticket one of the winning tickets. This can easily be calculated from the equation shown in the previous section, that is the ***n*** choose ***k*** equation. The ***n*** in this context is the total number of tickets and the ***k*** choices are the number of winning tickets, or 2 in this previous example. 
+Having the above fomula we can calculate the probability of having 1, 2, 3 and so on winners, for a given number of the total tickets. However, this is just how likely it is that the draw will result in 2 winners, for example. What we need to consider next is the probability that our ticket one of the winning tickets. This can easily be calculated as the inverse of the equation shown in the previous section. That is the ***n*** choose ***k*** equation. The ***n*** in this context is the total number of tickets and the ***k*** choices are the number of winning tickets, or 2 in the previous example. In mathimatical terms:
+
+![\begin{align*}
+\color{red}
+P(n)=\dfrac{(\lambda)^n\e^{-\lambda}}{n!} {N \choose n}^{-1}
+\end{align*}
+](https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Ccolor%7Bred%7D%0AP%28n%29%3D%5Cdfrac%7B%28%5Clambda%29%5En%5Ce%5E%7B-%5Clambda%7D%7D%7Bn%21%7D+%7BN+%5Cchoose+n%7D%5E%7B-1%7D%0A%5Cend%7Balign%2A%7D%0A)
+
+where, *N* is the total number of tickets.
 
 Having those two probabilities we multiply them together to find our probability of winning when there are ***n*** winners. The last step is to multiply the probability with the outcome. In this case the outcome is the amount of money that we will receive which is, for the 8<sup>th</sup> price tier, the Jackpot divided by the number of winners. 
 
 All we need to do to find the expected value, is to calculate the probability of winning for 1 to the max amount of winners, which is the total amount of tickets, for every price tier. However, this is still impossible to calculate as the function of ***n*** choose ***k*** equation is difficult to calculate for large numbers. Thankfully, we don't really need to do that.
+
+Since each probability is multiplied by its corrisponding prize, after a curtain number of winners the product is so small that can be neglected. In reality, even if we wanted to include it, the precision of the computer wouldn't allow it. But after how many winners do we say enough?
 
 To be continued... (passive-aggressive)
 
