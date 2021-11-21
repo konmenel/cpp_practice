@@ -1,6 +1,5 @@
 #include "joker.h"
 
-
 using std::string;
 using std::map;
 using std::cout;
@@ -155,6 +154,9 @@ double get_comb_prize(vector<int> prize_group)
 
 double pow_factorial(double x, int n)
 {
+    /*
+    * @brief returns x^n / n!
+    */
     if (n == 0)
         return 1;
     else if (n == 1)
@@ -174,10 +176,9 @@ double prob_of_n_winners(int n, double prob)
 }
 
 
+//FIXME: probability of winners multiplied by distinct tickets [comb * (1 - prob_lsse ** no_tickets)]
 double expected_value(double tol)
 {
-    // TODO: fix nan in res and term.
-
     double prob_for_1, prob, term, exp_winners, n_choose_k;
     double res = 0;
     int winners;
