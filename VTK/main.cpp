@@ -1,35 +1,42 @@
 #include "vtk.h"
+#include "mytimer.h"
 
 
 int main() 
 {
-    float data[9] = {
+    float points[9] = {
         1.0f, 2.0f, 3.0f,
         10.0f, 2.0f, 3.0f,
         20.0f, 2.0f, 3.0f
     };
 
-    // Legacy_VTK_IO vtk_io("test.vtk");
-    // vtk_io.write_header();
-    // vtk_io.write_data(reinterpret_cast<char*>(data), sizeof(data));
-    // vtk_io.write_tail();
+    float vel[9] = {
+        1.0f, 2.0f, 3.0f,
+        10.0f, 2.0f, 3.0f,
+        20.0f, 2.0f, 3.0f
+    };
 
-    Xml_VTK_OI vtk_io2("test.vtp");
-    vtk_io2.write_header();
-    vtk_io2.write_data(reinterpret_cast<char*>(data), sizeof(data));
-    vtk_io2.write_tail();
-
-    // std::string encoded_data = Xml_VTK_OI::base64_encoder(std::string(reinterpret_cast<char*>(data), sizeof(data)));
-    std::string encoded_data = macaron::Base64::Encode(std::string(reinterpret_cast<char*>(data), sizeof(data)));
-    std::string decoded_data;
-    macaron::Base64::Decode(encoded_data, decoded_data);
-
-    float *data_ = reinterpret_cast<float *>((char *)decoded_data.c_str());
-
-    for (int i = 0; i < 9; ++i)
     {
-        std::cout << data_[i] << std::endl;
+        Timer timer("vtk write");
+        LegacyVTKIO vtk_io("test.vtk");
+        vtk_io.write_header();
+        vtk_io.write_data(reinterpret_cast<const char*>(points), sizeof(points), sizeof(float));
+    
+        vtk_io.write_tail();
     }
+
+    // XmlVTKOI vtk_io2("test.vtp");
+    // vtk_io2.write_header();
+    // const char *bytes_data = reinterpret_cast<const char*>(data);
+    // vtk_io2.write_data(bytes_data, sizeof(data));
+    // vtk_io2.write_tail();
+
+    double x = 123.456789;
+    float y = static_cast<float>(x);
+
+    std::cout << "x: " << x << std::endl;
+    std::cout << "y: " << y << std::endl;
+    std::cout << "sizeof(y): " << sizeof(y) << std::endl;
 
     return 0;
 }
