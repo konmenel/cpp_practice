@@ -22,7 +22,7 @@ inline endianness get_system_endianness()
 class VTKOI 
 {
 public:
-    VTKOI(const std::string filename) : _out_file(std::ofstream(filename)) {};
+    VTKOI(const std::string filename) : _out_file(std::ofstream(filename, std::ios::binary | std::ios::out)) {};
 
     virtual ~VTKOI() 
     {
